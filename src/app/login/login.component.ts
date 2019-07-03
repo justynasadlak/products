@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ServiceService } from './service.service';
 import { UserDataService } from '../services/user-data.service';
 import { Router } from '@angular/router';
 
@@ -15,7 +14,7 @@ export class LoginComponent {
   value = 50;
 
   private spinner = false;
-  constructor(private serviceService: ServiceService, private userDataService: UserDataService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private userDataService: UserDataService, private formBuilder: FormBuilder, private router: Router) {
   }
 
   private loginForm = this.formBuilder.group({
@@ -23,15 +22,7 @@ export class LoginComponent {
     password: ['', [Validators.required, Validators.minLength(5)]]
   });
 
-  // emailFormControl = new FormControl('', [
-  //   Validators.required,
-  //   Validators.email,
-  // ]);
-  //
-  // passwordFormControl = new FormControl('', [
-  //   Validators.required,
-  //   Validators.minLength(5)
-  // ]);
+
 
   onSubmit() {
     this.spinner = true;
@@ -44,12 +35,8 @@ export class LoginComponent {
           console.error(e);
         }
       );
-    // this.loginForm.reset();
-    // this.router.navigate(['my-profile']);
+
   }
 
-  onClick(dataFromForm) {
 
-    this.serviceService.getDasd(dataFromForm).subscribe(console.log);
-  }
 }
