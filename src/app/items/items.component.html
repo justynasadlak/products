@@ -1,0 +1,29 @@
+<div class="main">
+  <form class="example-form" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Name" type="text" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Color" type="text" formControlName="color" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Description" type="text" formControlName="desc" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Price" type="number" formControlName="price" />
+    </mat-form-field>
+    <button mat-flat-button color="primary" type="submit" [disabled]="!itemForm.valid">
+      Submit
+    </button>
+  </form>
+
+  <h1>items</h1>
+
+  <div>
+    <div *ngFor="let item of items">
+      <mat-card routerLink="/item/{{ item.id }}" [style.color]="item.color">{{
+        item.name
+      }}</mat-card>
+    </div>
+  </div>
+</div>

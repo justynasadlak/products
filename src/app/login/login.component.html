@@ -1,0 +1,38 @@
+<div class="login__wrapper">
+  <mat-card>
+    <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <img mat-card-avatar src="https://media.istockphoto.com/vectors/smile-vector-template-design-vector-id988112594">
+      <mat-card-content>
+        <mat-form-field>
+          <input matInput type="email" placeholder="Email" formControlName="email">
+          <mat-icon matSuffix
+                    *ngIf="loginForm.touched && loginForm.hasError('required') || loginForm.hasError('email')">
+            close
+          </mat-icon>
+          <mat-icon matSuffix *ngIf="loginForm.valid">check</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password" formControlName="password">
+          <mat-icon matSuffix *ngIf="loginForm.touched && loginForm.hasError('required')">close
+          </mat-icon>
+          <mat-icon matSuffix *ngIf="loginForm.valid">check</mat-icon>
+        </mat-form-field>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <mat-checkbox>Remember</mat-checkbox>
+        <button mat-flat-button color="primary" type="submit" >
+          <!--[routerLink]="['/my-profile']"-->
+          SIGN IN
+        </button>
+      </mat-card-actions>
+    </form>
+    <mat-spinner *ngIf="spinner"
+                 class="example-margin"
+                 [color]="color"
+                 [mode]="mode"
+                 [value]="value">
+    </mat-spinner>
+  </mat-card>
+</div>
